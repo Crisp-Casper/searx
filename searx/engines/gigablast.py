@@ -1,17 +1,17 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-"""
-Gigablast (Web)
-"""
-# pylint: disable=missing-function-docstring, invalid-name
+#x#"""
+#x#Gigablast (Web)
+#x#"""
+#x## pylint: disable=missing-function-docstring, invalid-name
 
-import re
-from json import loads, JSONDecodeError
-from urllib.parse import urlencode
-from searx.exceptions import SearxEngineResponseException
-from searx.poolrequests import get
+#x#import re
+#x#from json import loads, JSONDecodeError
+#x#from urllib.parse import urlencode
+#x#from searx.exceptions import SearxEngineResponseException
+#x#from searx.poolrequests import get
 
 # about
-about = {
+#x#about = {
 #x# "website": 'https://www.gigablast.com',
 #x# "wikidata_id": 'Q3105449',
 #x# "official_api_documentation": 'https://gigablast.com/api.html',
@@ -21,25 +21,25 @@ about = {
 }
 
 # engine dependent config
-categories = ['general']
-collections = 'main'
-search_type = ''
-fast = 0
+#x#categories = ['general']
+#x#collections = 'main'
+#x#search_type = ''
+#x#fast = 0
 # gigablast's pagination is totally damaged, don't use it
-paging = False
-safesearch = True
+#x#paging = False
+#x#safesearch = True
 
 # search-url
-base_url = 'https://gigablast.com'
+#x#base_url = 'https://gigablast.com'
 
 # ugly hack: gigablast requires a random extra parameter which can be extracted
 # from the source code of the gigablast HTTP client
-extra_param = ''
-extra_param_path='/search?c=main&qlangcountry=en-us&q=south&s=10'
+#x#extra_param = ''
+#x#extra_param_path='/search?c=main&qlangcountry=en-us&q=south&s=10'
 
-_wait_for_results_msg = 'Loading results takes too long. Please enable fast option in gigablast engine.'
+#x#_wait_for_results_msg = 'Loading results takes too long. Please enable fast option in gigablast engine.'
 
-def parse_extra_param(text):
+#x#def parse_extra_param(text):
 
 #x# # example:
 #x# #
@@ -60,12 +60,12 @@ def parse_extra_param(text):
 #x##x##x##x#extra_param += re_var.search(line).group(1)
 #x##x##x##x#break
 
-def init(engine_settings=None):  # pylint: disable=unused-argument
+#x#def init(engine_settings=None):  # pylint: disable=unused-argument
 #x# parse_extra_param(get(base_url + extra_param_path).text)
 
 
 # do search-request
-def request(query, params):  # pylint: disable=unused-argument
+#x#def request(query, params):  # pylint: disable=unused-argument
 
 #x# # see API http://www.gigablast.com/api.html#/search
 #x# # Take into account, that the API has some quirks ..
@@ -94,7 +94,7 @@ def request(query, params):  # pylint: disable=unused-argument
 #x# return params
 
 # get response from search-request
-def response(resp):
+#x#def response(resp):
 #x# results = []
 
 #x# try:
