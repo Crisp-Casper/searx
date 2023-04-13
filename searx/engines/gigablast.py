@@ -18,7 +18,7 @@
 #x# "use_official_api": True,
 #x# "require_api_key": False,
 #x# "results": 'JSON',
-}
+#x#}
 
 # engine dependent config
 #x#categories = ['general']
