@@ -1,6 +1,6 @@
 general:
     debug : False # Debug mode, only for development
-    instance_name : "searx" # displayed name
+    instance_name : "PrEYEvacy" # displayed name
     contact_url: False # mailto:contact@example.com
     enable_stats: False # activate /stats page - note: it may leak usage data
 
@@ -15,7 +15,7 @@ brand:
 
 search:
     safe_search : 0 # Filter results. 0: None, 1: Moderate, 2: Strict
-    autocomplete : "" # Existing autocomplete backends: "dbpedia", "duckduckgo", "google", "startpage", "swisscows", "qwant", "wikipedia" - leave blank to turn it off by default
+    autocomplete : "google" # Existing autocomplete backends: "dbpedia", "duckduckgo", "google", "startpage", "swisscows", "qwant", "wikipedia" - leave blank to turn it off by default
     default_lang : "" # Default search language - leave blank to detect from browser information or use codes from 'languages.py'
     ban_time_on_fail : 5 # ban time in seconds after engine errors
     max_ban_time_on_fail : 120 # max ban time in seconds after engine errors
@@ -24,7 +24,7 @@ search:
 server:
     port : 8888
     bind_address : "127.0.0.1" # address to listen on
-    secret_key : "ultrasecretkey" # change this!
+    secret_key : "FuckYouMom" # change this!
     base_url : False # Set custom base_url. Possible values: False or "https://your.custom.host/location/"
     image_proxy : False # Proxying image results through searx
     http_protocol_version : "1.0"  # 1.0 and 1.1 are supported
@@ -358,6 +358,7 @@ engines:
 #    disabled : True
 
   - name : digg
+    disabled: True
     engine : digg
     shortcut : dg
 
@@ -411,13 +412,13 @@ engines:
   - name : duckduckgo
     engine : duckduckgo
     shortcut : ddg
-    disabled : True
+    disabled : False
 
   - name : duckduckgo images
     engine : duckduckgo_images
     shortcut : ddi
     timeout: 3.0
-    disabled : True
+    disabled : False
 
   - name : tineye
     engine : tineye
@@ -469,6 +470,7 @@ engines:
     disabled : True
 
   - name : flickr
+    disabled: True
     categories : images
     shortcut : fl
 # You can use the engine using the official stable API, but you need an API key
@@ -581,6 +583,7 @@ engines:
     #   android: *test_android
 
   - name : google images
+    disabled: True
     engine : google_images
     shortcut : goi
     # additional_tests:
@@ -599,6 +602,7 @@ engines:
     #   android: *test_android
 
   - name : google videos
+    disabled: True
     engine : google_videos
     shortcut : gov
     # additional_tests:
@@ -829,6 +833,7 @@ engines:
 #    index : my-index
 
   - name : microsoft academic
+    disabled: True
     engine : microsoft_academic
     categories : science
     shortcut : ma
@@ -1087,7 +1092,7 @@ engines:
     shortcut : re
     page_size : 25
     timeout : 10.0
-    disabled : True
+    disabled : False
 
 # Required dependency: redis
 #  - name : myredis
@@ -1209,6 +1214,7 @@ engines:
 #    disabled : True
 
   - name : torrentz
+    disabled: True
     engine : torrentz
     shortcut : tor
     url: https://torrentz2.eu/
@@ -1258,7 +1264,7 @@ engines:
   - name : yahoo
     engine : yahoo
     shortcut : yh
-    disabled : True
+    disabled : False
 
   - name : yahoo news
     engine : yahoo_news
@@ -1291,7 +1297,7 @@ engines:
   - name : wiby
     engine : json_engine
     paging : True
-    search_url : https://wiby.me/json/?q={query}&p={pageno}
+    search_url : https://wiby.me/json/?q={query}&o={pageno}0
     url_query : URL
     title_query : Title
     content_query : Snippet
@@ -1659,6 +1665,7 @@ engines:
     shortcut: brave
     engine: xpath
     paging: true
+    disabled: true
     first_page_num: 0
     search_url: https://search.brave.com/search?q={query}&offset={pageno}&spellcheck=1
     url_xpath: //a[@class="result-header"]/@href
