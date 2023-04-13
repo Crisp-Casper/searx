@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 """
- Gigablast (Web)
+Gigablast (Web)
 """
 # pylint: disable=missing-function-docstring, invalid-name
 
@@ -12,12 +12,12 @@ from searx.poolrequests import get
 
 # about
 about = {
-    "website": 'https://www.gigablast.com',
-    "wikidata_id": 'Q3105449',
-    "official_api_documentation": 'https://gigablast.com/api.html',
-    "use_official_api": True,
-    "require_api_key": False,
-    "results": 'JSON',
+#x# "website": 'https://www.gigablast.com',
+#x# "wikidata_id": 'Q3105449',
+#x# "official_api_documentation": 'https://gigablast.com/api.html',
+#x# "use_official_api": True,
+#x# "require_api_key": False,
+#x# "results": 'JSON',
 }
 
 # engine dependent config
@@ -30,109 +30,109 @@ paging = False
 safesearch = True
 
 # search-url
-#base_url = 'https://gigablast.com'
+base_url = 'https://gigablast.com'
 
 # ugly hack: gigablast requires a random extra parameter which can be extracted
 # from the source code of the gigablast HTTP client
-#extra_param = ''
-#extra_param_path='/search?c=main&qlangcountry=en-us&q=south&s=10'
+extra_param = ''
+extra_param_path='/search?c=main&qlangcountry=en-us&q=south&s=10'
 
-#_wait_for_results_msg = 'Loading results takes too long. Please enable fast option in gigablast engine.'
+_wait_for_results_msg = 'Loading results takes too long. Please enable fast option in gigablast engine.'
 
-#def parse_extra_param(text):
+def parse_extra_param(text):
 
-    # example:
-    #
-    # var uxrl='/search?c=main&qlangcountry=en-us&q=south&s=10&rand=1590740241635&n';
-    # uxrl=uxrl+'sab=730863287';
-    #
-    # extra_param --> "rand=1590740241635&nsab=730863287"
+#x# # example:
+#x# #
+#x# # var uxrl='/search?c=main&qlangcountry=en-us&q=south&s=10&rand=1590740241635&n';
+#x# # uxrl=uxrl+'sab=730863287';
+#x# #
+#x# # extra_param --> "rand=1590740241635&nsab=730863287"
 
-   # global extra_param  # pylint: disable=global-statement
-  #  re_var= None
- #   for line in text.splitlines():
-#        if re_var is None and extra_param_path in line:
-       #     var = line.split("=")[0].split()[1]  # e.g. var --> 'uxrl'
-      #      re_var = re.compile(var + "\\s*=\\s*" + var + "\\s*\\+\\s*'" + "(.*)" + "'(.*)")
-     #       extra_param = line.split("'")[1][len(extra_param_path):]
-    #        continue
-   #     if re_var is not None and re_var.search(line):
-  #          extra_param += re_var.search(line).group(1)
- #           break
+#x# global extra_param  # pylint: disable=global-statement
+#x# re_var= None
+#x# for line in text.splitlines():
+#x##x#  if re_var is None and extra_param_path in line:
+#x##x##x##x#var = line.split("=")[0].split()[1]  # e.g. var --> 'uxrl'
+#x##x##x##x#re_var = re.compile(var + "\\s*=\\s*" + var + "\\s*\\+\\s*'" + "(.*)" + "'(.*)")
+#x##x##x##x#extra_param = line.split("'")[1][len(extra_param_path):]
+#x##x##x##x#continue
+#x##x#  if re_var is not None and re_var.search(line):
+#x##x##x##x#extra_param += re_var.search(line).group(1)
+#x##x##x##x#break
 
-#def init(engine_settings=None):  # pylint: disable=unused-argument
-#    parse_extra_param(get(base_url + extra_param_path).text)
+def init(engine_settings=None):  # pylint: disable=unused-argument
+#x# parse_extra_param(get(base_url + extra_param_path).text)
 
 
 # do search-request
-#def request(query, params):  # pylint: disable=unused-argument
+def request(query, params):  # pylint: disable=unused-argument
 
-    # see API http://www.gigablast.com/api.html#/search
-    # Take into account, that the API has some quirks ..
-  #  query_args = {
-        #'c': collections,
-        #'format': 'json',
-        #'q': query,
-       # 'dr': 1 ,
-      #  'showgoodimages': 0,
-     #   'fast': fast,
-    #}
+#x# # see API http://www.gigablast.com/api.html#/search
+#x# # Take into account, that the API has some quirks ..
+#x# query_args = {
+#x##x#  'c': collections,
+#x##x#  'format': 'json',
+#x##x#  'q': query,
+#x##x#  'dr': 1 ,
+#x##x#  'showgoodimages': 0,
+#x##x#  'fast': fast,
+#x# }
 
-   # if search_type != '':
-     #   query_args['searchtype'] = search_type
+#x# if search_type != '':
+#x##x#  query_args['searchtype'] = search_type
 
-    #if params['language'] and params['language'] != 'all':
-     #   query_args['qlangcountry'] = params['language']
-    #    query_args['qlang'] = params['language'].split('-')[0]
+#x# if params['language'] and params['language'] != 'all':
+#x##x#  query_args['qlangcountry'] = params['language']
+#x##x#  query_args['qlang'] = params['language'].split('-')[0]
 
-   # if params['safesearch'] >= 1:
-  #      query_args['ff'] = 1
+#x# if params['safesearch'] >= 1:
+#x##x#  query_args['ff'] = 1
 
- #   search_url = '/search?' + urlencode(query_args)#
-#    params['url'] = base_url + search_url + extra_param
+#x# search_url = '/search?' + urlencode(query_args)
+#x# params['url'] = base_url + search_url + extra_param
 
- #   return params
+#x# return params
 
 # get response from search-request
-#def response(resp):
-    #results = []
+def response(resp):
+#x# results = []
 
-    #try:
-    #    response_json = loads(resp.text)
-   # except JSONDecodeError as e:
-   #     if 'Waiting for results' in resp.text:
-  #          raise SearxEngineResponseException(message=_wait_for_results_msg)  # pylint: disable=raise-missing-from
- #       raise e
+#x# try:
+#x##x#  response_json = loads(resp.text)
+#x# except JSONDecodeError as e:
+#x##x#  if 'Waiting for results' in resp.text:
+#x##x##x##x#raise SearxEngineResponseException(message=_wait_for_results_msg)  # pylint: disable=raise-missing-from
+#x##x#  raise e
 
 
-#    for result in response_json['results']:
-        # see "Example JSON Output (&format=json)"
-      # at http://www.gigablast.com/api.html#/search
+#x# for result in response_json['results']:
+#x##x#  # see "Example JSON Output (&format=json)"
+#x##x#  # at http://www.gigablast.com/api.html#/search
 
-#        # sort out meaningless result
-#
-#        title = result.get('title')
-#        if len(title) < 2:
-#            continue
-#
-#        url = result.get('url')
-#        if len(url) < 9:
-#            continue
-#
-#        content = result.get('sum')
-#        if len(content) < 5:
-#            continue
-#
-#        # extend fields
-#
-#        subtitle = result.get('title')
-#        if len(subtitle) > 3 and subtitle != title:
-#            title += " - " + subtitle
-#
-#        results.append(dict(
-#            url = url
-#            , title = title
-#            , content = content
-#       ))
-#
-#    return results
+#x##x#  # sort out meaningless result
+
+#x##x#  title = result.get('title')
+#x##x#  if len(title) < 2:
+#x##x##x##x#continue
+
+#x##x#  url = result.get('url')
+#x##x#  if len(url) < 9:
+#x##x##x##x#continue
+
+#x##x#  content = result.get('sum')
+#x##x#  if len(content) < 5:
+#x##x##x##x#continue
+
+#x##x#  # extend fields
+
+#x##x#  subtitle = result.get('title')
+#x##x#  if len(subtitle) > 3 and subtitle != title:
+#x##x##x##x#title += " - " + subtitle
+
+#x##x#  results.append(dict(
+#x##x##x##x#url = url
+#x##x##x##x#, title = title
+#x##x##x##x#, content = content
+#x##x#  ))
+
+#x# return results
